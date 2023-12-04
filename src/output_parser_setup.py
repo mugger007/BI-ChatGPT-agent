@@ -20,6 +20,6 @@ class CustomOutputParser(AgentOutputParser):
             tool=action, 
             tool_input=action_input.strip(" ").strip('"'), 
             log=llm_output
-            )
+        )
     
 output_parser = CustomOutputParser()
