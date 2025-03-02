@@ -1,19 +1,12 @@
-import pandas as pandas
+import pandas as pd
+from typing import Tuple, Union
 
-def get_column_names(file_path):
+def get_column_names(file_path: str) -> Tuple[Union[pd.DataFrame, None], str]:
+    """Reads a CSV file and returns the DataFrame and column names as a string."""
     try:
-        # Read the CSV file into a DataFrame
         df = pd.read_csv(file_path)
-
-        # Get the column names as a list
         column_names_list = df.columns.tolist()
-
-        # Convert the list of column names to a comma-separated string
         column_names_str = ', '.join(column_names_list)
-
-        # Return the DataFrame and the column names string
         return df, column_names_str
-
     except Exception as e:
-        # Handle exceptions such as file not found or invalid CSV format
         return None, f"Error: {str(e)}"
